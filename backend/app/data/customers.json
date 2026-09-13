@@ -1,0 +1,83 @@
+[
+  {
+    "customer_id": "priya-nair",
+    "name": "Priya Nair",
+    "loyalty_tier": "Gold",
+    "email": "priya.nair@example.com",
+    "phone": "+91-98xxxxxxx1",
+    "travel_history_last_12_months": 6,
+    "prior_complaints": [
+      {
+        "type": "delayed baggage",
+        "status": "resolved",
+        "resolution": "voucher"
+      }
+    ],
+    "bookings": [
+      {
+        "pnr": "SK4821X",
+        "flight_number": "SK-204",
+        "route": "Delhi → Goa",
+        "date": "2026-09-23",
+        "scheduled_departure": "18:40",
+        "status": "cancelled",
+        "reason": "operational reasons",
+        "return_flight": {
+          "flight_number": "SK-205",
+          "route": "Goa → Delhi",
+          "date": "2026-09-25",
+          "scheduled_departure": "16:20",
+          "status": "unaffected"
+        }
+      }
+    ]
+  },
+  {
+    "customer_id": "arvind-kulkarni",
+    "name": "Arvind Kulkarni",
+    "loyalty_tier": "Silver",
+    "email": "arvind.kulkarni@example.com",
+    "phone": "+91-98xxxxxxx2",
+    "travel_history_last_12_months": 3,
+    "prior_complaints": [],
+    "bookings": [
+      {
+        "pnr": "TR1190B",
+        "flight_number": "SK-118",
+        "route": "Mumbai → Bengaluru",
+        "date": "2026-09-23",
+        "scheduled_departure": "07:10",
+        "status": "delayed",
+        "delay_hours": 4,
+        "new_departure": "11:10"
+      }
+    ]
+  },
+  {
+    "customer_id": "meher-kaur",
+    "name": "Meher Kaur",
+    "loyalty_tier": "Platinum",
+    "email": "meher.kaur@example.com",
+    "phone": "+91-98xxxxxxx3",
+    "travel_history_last_12_months": 10,
+    "prior_complaints": [
+      {
+        "type": "overbooking",
+        "status": "resolved",
+        "resolution": "tier-status upgrade"
+      }
+    ],
+    "bookings": [
+      {
+        "pnr": "WL7742",
+        "flight_number": "SK-305",
+        "route": "Delhi → Hyderabad",
+        "date": "2026-09-23",
+        "scheduled_departure": "14:00",
+        "status": "delayed",
+        "delay_hours": 6,
+        "new_departure": "20:00"
+      }
+    ]
+  }
+]
