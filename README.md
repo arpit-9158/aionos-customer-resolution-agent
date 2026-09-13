@@ -76,9 +76,24 @@ From the repository root:
 
 5. Open the Vite frontend in the browser and begin with the customer selector.
 
+### Vercel deployment
+
+Deploy this repository as two Vercel projects:
+
+- Frontend project root: `frontend`; build command `npm run build`; output directory `dist`; set `VITE_API_BASE_URL=https://<backend-project>.vercel.app`.
+- Backend project root: `backend`; Vercel detects `api/index.py`; set `FRONTEND_ORIGIN=https://<frontend-project>.vercel.app`.
+
+The backend entrypoint is `backend/api/index.py` and exposes the existing `app.main:app` application without duplicating routes or business logic.
+
 ## Environment Variables
 
-No environment variables are required for the local MVP. The frontend uses `http://localhost:8000` for the API and the backend reads only the supplied local JSON data. No API keys or secrets are committed.
+Frontend configuration belongs in `frontend/.env.local` for local development or in the Vercel project settings for deployment:
+
+```env
+VITE_API_BASE_URL=http://localhost:8000
+```
+
+The backend accepts an optional `FRONTEND_ORIGIN` value to scope CORS. When it is unset, permissive CORS remains enabled for local development. Do not commit `.env` files or secrets.
 
 ## API Endpoints
 

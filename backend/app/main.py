@@ -5,7 +5,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-from app.core.config import DEBUG
+from app.core.config import DEBUG, FRONTEND_ORIGIN
 from app.services.agent_service import AgentService
 from app.services.customer_service import CustomerService
 
@@ -31,7 +31,7 @@ app = FastAPI(title='AIONOS Resolution Agent', version='1.0.0', lifespan=lifespa
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=['*'],
+    allow_origins=[FRONTEND_ORIGIN] if FRONTEND_ORIGIN else ['*'],
     allow_credentials=True,
     allow_methods=['*'],
     allow_headers=['*'],

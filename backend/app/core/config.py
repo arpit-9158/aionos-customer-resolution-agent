@@ -8,3 +8,4 @@ CUSTOMERS_FILE = DATA_DIR / 'customers.json'
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 MODEL_NAME = os.getenv('MODEL_NAME', 'gpt-4o-mini')
 DEBUG = os.getenv('DEBUG', 'false').lower() == 'true'
+FRONTEND_ORIGIN = os.getenv('FRONTEND_ORIGIN')

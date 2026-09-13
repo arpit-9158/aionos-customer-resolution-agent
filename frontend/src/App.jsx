@@ -1,6 +1,8 @@
 import { startTransition, useEffect, useMemo, useRef, useState } from 'react'
 import './App.css'
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'
+
 const quickActions = {
   'priya-nair': [
     'I want a full refund for the cancelled flight.',
@@ -67,7 +69,7 @@ function App() {
   useEffect(() => {
     const loadCustomers = async () => {
       try {
-        const response = await fetch('http://localhost:8000/api/customers')
+        const response = await fetch(`${API_BASE_URL}/api/customers`)
         if (!response.ok) throw new Error('Unable to fetch customer list')
         const data = await response.json()
         setCustomers(data)
@@ -101,7 +103,7 @@ function App() {
 
   useEffect(() => {
     if (!selectedCustomerId) return
-    fetch(`http://localhost:8000/api/customers/${selectedCustomerId}`)
+    fetch(`${API_BASE_URL}/api/customers/${selectedCustomerId}`)
       .then((response) => (response.ok ? response.json() : null))
       .then((data) => setCustomerProfile(data))
       .catch(() => setCustomerProfile(null))
@@ -141,7 +143,7 @@ function App() {
     setError('')
 
     try {
-      const response = await fetch('http://localhost:8000/api/chat', {
+      const response = await fetch(`${API_BASE_URL}/api/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ customer_id: customerId, message: messageToSend }),
@@ -170,7 +172,7 @@ function App() {
     const actionKey = `${isEscalation ? 'escalation' : 'action'}-${action.type}`
     setActionState((current) => ({ ...current, [actionKey]: 'PROCESSING' }))
     try {
-      const response = await fetch('http://localhost:8000/api/actions', {
+      const response = await fetch(`${API_BASE_URL}/api/actions`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ customer_id: selectedCustomerId, action_type: action.type, request: action.label }),
@@ -289,7 +291,7 @@ function App() {
             </div>
             <div>
               <span>Reason</span>
-              <strong>{flight?.reason || (flight?.status === 'delayed' ? 'Operational delay' : 'Not available')}</strong>
+              <strong>{flight?.reason || 'Not specified'}</strong>
             </div>
           </div>
         </section>
